@@ -172,6 +172,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--red);border-colo
  .nav ul{flex-direction:column;gap:4px}
  .nav-toggle{display:block}
  .hero{padding:64px 0}
+ .chip.c1{left:0}.chip.c2{right:0}
  form .row{grid-template-columns:1fr}
 }
 @media(max-width:560px){.footer-grid{grid-template-columns:1fr}.collage{grid-template-columns:repeat(2,1fr)}}
