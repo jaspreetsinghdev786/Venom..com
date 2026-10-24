@@ -3,106 +3,120 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Artists – AME Digital</title>
+<title>Artists — AME Digital</title>
+<meta name="description" content="The artists AME Digital records, releases and promotes.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23d8383b'/%3E%3Ctext x='16' y='21' font-family='Arial' font-weight='800' font-size='12' fill='%23fff' text-anchor='middle'%3EAME%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="no-js">
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="site-header">
   <div class="container">
-    <a class="logo" href="index.html"><span class="logo-mark">AME</span><span>DIGITAL<small>ARTIST MEDIA ENTERTAINMENT</small></span></a>
-    <nav class="nav">
+    <a class="logo" href="index.html"><span class="logo-mark">AME</span><span>Digital<small>ARTIST MEDIA ENTERTAINMENT</small></span></a>
+    <nav class="nav" aria-label="Main">
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="our-clients.html">Our Clients</a></li>
-        <li><a href="our-artists.html">Our Artists</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="contact-us.html">Contact Us</a></li>
+        <li><a href="our-artists.html">Artists</a></li>
+        <li><a href="our-clients.html">Clients</a></li>
+        <li><a href="contact-us.html">Contact</a></li>
       </ul>
     </nav>
-    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-cta">
+      <a class="btn" href="contact-us.html">Release a track <span class="arr">→</span></a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
 
+<main id="main">
+
 <section class="page-hero">
   <div class="container">
-    <h1>Our Artists</h1>
-    <p>The talent we create, release and promote with.</p>
+    <div class="crumbs"><a href="index.html">Home</a> / Artists</div>
+    <h1 class="h-xl">The roster.</h1>
+    <p class="lead">Singers, producers, lyricists and actors we record, release and promote.</p>
   </div>
 </section>
 
-<section class="artists">
+<section>
   <div class="container">
-    <h2>Some of <span class="accent">Our Artists</span></h2>
     <div class="artist-grid">
-      <div class="artist"><div class="photo" data-initial="S"><span class="num">01</span></div><h4>Sufraaz</h4><p>SINGER / WRITER / COMPOSER</p></div>
-      <div class="artist"><div class="photo" data-initial="K"><span class="num">02</span></div><h4>Kerryy</h4><p>MUSIC PRODUCER</p></div>
-      <div class="artist"><div class="photo" data-initial="KB"><span class="num">03</span></div><h4>King B Chouhan</h4><p>ACTOR / SINGER</p></div>
-      <div class="artist"><div class="photo" data-initial="SS"><span class="num">04</span></div><h4>Surjeet Sohal</h4><p>SINGER</p></div>
-      <div class="artist"><div class="photo" data-initial="D"><span class="num">05</span></div><h4>Dshwn</h4><p>SINGER / LYRICIST / COMPOSER</p></div>
-      <div class="artist"><div class="photo" data-initial="MM"><span class="num">06</span></div><h4>Mani Mishal</h4><p>SINGER / MUSIC PRODUCER</p></div>
+      <div class="artist reveal"><img src="https://picsum.photos/seed/ame-a1/900/1100" alt="Sufraaz"><div class="meta"><div><h3>Sufraaz</h3><p>Singer · writer · composer</p></div><span class="idx">01</span></div></div>
+      <div class="artist reveal"><img src="https://picsum.photos/seed/ame-a2/800/1000" alt="Kerryy"><div class="meta"><div><h3>Kerryy</h3><p>Music producer</p></div><span class="idx">02</span></div></div>
+      <div class="artist reveal"><img src="https://picsum.photos/seed/ame-a3/700/950" alt="King B Chouhan"><div class="meta"><div><h3>King B Chouhan</h3><p>Actor · singer</p></div><span class="idx">03</span></div></div>
+      <div class="artist reveal"><img src="https://picsum.photos/seed/ame-a4/700/950" alt="Surjeet Sohal"><div class="meta"><div><h3>Surjeet Sohal</h3><p>Singer</p></div><span class="idx">04</span></div></div>
+      <div class="artist reveal"><img src="https://picsum.photos/seed/ame-a5/800/1000" alt="Dshwn"><div class="meta"><div><h3>Dshwn</h3><p>Singer · lyricist · composer</p></div><span class="idx">05</span></div></div>
+      <div class="artist reveal"><img src="https://picsum.photos/seed/ame-a6/900/1100" alt="Mani Mishal"><div class="meta"><div><h3>Mani Mishal</h3><p>Singer · music producer</p></div><span class="idx">06</span></div></div>
     </div>
   </div>
 </section>
 
-<section class="partners reveal">
+<section class="cta">
   <div class="container">
-    <h2>Our Certified Partners</h2>
-    <div class="partner-row">
-      <span>YouTube Partner</span><span>Meta Partner</span><span>Spotify for Artists</span><span>Apple Music</span><span>Amazon Music</span>
+    <div class="reveal">
+      <p class="eyebrow">Join the roster</p>
+      <h2 class="h-lg">Send us your demo.</h2>
+      <p class="lead" style="margin-top:16px">A rough mix is enough. We listen to everything that comes in.</p>
+    </div>
+    <div class="cta-actions reveal">
+      <a class="btn" href="contact-us.html">Contact us <span class="arr">→</span></a>
     </div>
   </div>
 </section>
+
+</main>
 
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <a class="logo" href="index.html"><span class="logo-mark">AME</span><span>DIGITAL<small>ARTIST MEDIA ENTERTAINMENT</small></span></a>
-      <p>Want to work with us? Head to the contact form.</p>
+      <a class="logo" href="index.html"><span class="logo-mark">AME</span><span>Digital<small>ARTIST MEDIA ENTERTAINMENT</small></span></a>
+      <p>Distribution, promotion and production for independent artists and labels, worldwide.</p>
       <div class="social">
-        <a href="#" aria-label="Facebook">f</a><a href="#" aria-label="YouTube">YT</a><a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="TikTok">TT</a>
+        <a href="#" aria-label="Instagram">Instagram</a><a href="#" aria-label="YouTube">YouTube</a><a href="#" aria-label="Facebook">Facebook</a><a href="#" aria-label="TikTok">TikTok</a>
       </div>
     </div>
     <div>
       <h4>Services</h4>
       <ul>
-        <li><a href="services.html#production">Music</a></li>
-        <li><a href="services.html#production">Music Video</a></li>
-        <li><a href="services.html#promotions">Audio Distribution</a></li>
-        <li><a href="services.html#promotions">YouTube Promotion</a></li>
-        <li><a href="services.html#production">Mixing &amp; Mastering</a></li>
+        <li><a href="services.html#promotions">Audio distribution</a></li>
+        <li><a href="services.html#promotions">YouTube promotion</a></li>
+        <li><a href="services.html#production">Music production</a></li>
+        <li><a href="services.html#production">Mixing &amp; mastering</a></li>
+        <li><a href="services.html#post-production">Video editing</a></li>
       </ul>
     </div>
     <div>
-      <h4>Other</h4>
+      <h4>Company</h4>
       <ul>
-        <li><a href="services.html#post-production">Video Editing</a></li>
-        <li><a href="services.html#post-production">Lyrical Video</a></li>
-        <li><a href="services.html#post-production">Poster Design</a></li>
-        <li><a href="services.html#post-production">Motion Poster</a></li>
-        <li><a href="services.html#promotions">Censor Certificate</a></li>
+        <li><a href="our-artists.html">Artists</a></li>
+        <li><a href="our-clients.html">Clients</a></li>
+        <li><a href="services.html">All services</a></li>
+        <li><a href="contact-us.html">Contact</a></li>
       </ul>
     </div>
     <div>
-      <h4>Contact Us</h4>
+      <h4>Contact</h4>
       <ul>
-        <li>+91 00000 00000</li>
-        <li>Worldwide Services</li>
-        <li>hello@example.com</li>
-        <li>Contact us for details about any service.</li>
+        <li><a href="tel:+910000000000">+91 00000 00000</a></li>
+        <li><a href="mailto:hello@example.com">hello@example.com</a></li>
+        <li><a href="contact-us.html">Worldwide services</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <div class="container">
-      <div><a href="#">Terms of Service</a><a href="#">Privacy Policy</a><a href="#">Sitemap</a></div>
-      <div>Copyright &copy; 2025 The AME Digital &bull; All Rights Reserved</div>
+      <div><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Sitemap</a></div>
+      <div>© 2025 The AME Digital. All rights reserved.</div>
     </div>
   </div>
 </footer>
 
+<script>document.body.classList.remove("no-js")</script>
 <script src="js/main.js"></script>
 </body>
 </html>
