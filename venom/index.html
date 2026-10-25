@@ -29,9 +29,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/","gsap":"https://cdn.jsdelivr.net/npm/gsap@3.13.0/index.js","gsap/":"https://cdn.jsdelivr.net/npm/gsap@3.13.0/","lenis":"https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.mjs"}}</script>
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Venom Digital","url":"https://venom-digital.example/","logo":"https://venom-digital.example/assets/og.jpg","parentOrganization":{"@type":"Organization","name":"AME Digital"},"email":"hello@example.com","telephone":"+91 00000 00000"}</script>
 </head>
 <body>
+<div class="loader" aria-hidden="true"><span class="loader-mark foil">V</span><div class="loader-bar"><i></i></div></div>
+<canvas class="world" aria-hidden="true"></canvas>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap">
@@ -45,20 +49,25 @@
         <li><a href="contact-us.html">Contact Us</a></li>
       </ul>
     </nav>
-    <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <button class="sound" type="button" aria-label="Ambient sound" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 10v4M7 7v10M11 4v16M15 8v8M19 11v2"/></svg></button>
+    <button class="nav-toggle"aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 <main id="main">
 <section class="hero">
+  <canvas class="gl3d" aria-hidden="true"></canvas>
   <div class="vinyl-wrap" aria-hidden="true"><svg class="vinyl" viewBox="0 0 400 400" focusable="false"><defs><path id="lp" d="M200,200 m-47,0 a47,47 0 1,1 94,0 a47,47 0 1,1 -94,0"/></defs><g class="spin"><circle cx="200" cy="200" r="198" fill="#0b0b0c"/><circle cx="200" cy="200" r="72" fill="none" stroke="#17171a" stroke-width=".8"/><circle cx="200" cy="200" r="77" fill="none" stroke="#222226" stroke-width=".8"/><circle cx="200" cy="200" r="82" fill="none" stroke="#17171a" stroke-width=".8"/><circle cx="200" cy="200" r="87" fill="none" stroke="#17171a" stroke-width=".8"/><circle cx="200" cy="200" r="92" fill="none" stroke="#222226" stroke-width=".8"/><circle cx="200" cy="200" r="97" fill="none" stroke="#17171a" stroke-width=".8"/><circle cx="200" cy="200" r="102" fill="none" stroke="#17171a" stroke-width=".8"/><circle cx="200" cy="200" r="107" fill="none" stroke="#222226" stroke-width=".8"/><circle cx="200" cy="200" r="112" fill="none" stroke="#17171a" stroke-width=".8"/><circle cx="200" cy="200" r="117" fill="none" stroke="#17171a" stroke-width=".8"/><circle cx="200" cy="200" r="122" fill="none" stroke="#222226" stroke-width=".8"/><circle cx="200" cy="200" r="127" fill="none" stroke="#17171a" stroke-width=".8"/><circle cx="200" cy="200" r="132" fill="none" stroke="#17171a" stroke-width=".8"/><circle cx="200" cy="200" r="137" fill="none" stroke="#222226" stroke-width=".8"/><circle cx="200" cy="200" r="142" fill="none" stroke="#17171a" stroke-width=".8"/><circle cx="200" cy="200" r="147" fill="none" stroke="#17171a" stroke-width=".8"/><circle cx="200" cy="200" r="152" fill="none" stroke="#222226" stroke-width=".8"/><circle cx="200" cy="200" r="157" fill="none" stroke="#17171a" stroke-width=".8"/><circle cx="200" cy="200" r="162" fill="none" stroke="#17171a" stroke-width=".8"/><circle cx="200" cy="200" r="167" fill="none" stroke="#222226" stroke-width=".8"/><circle cx="200" cy="200" r="172" fill="none" stroke="#17171a" stroke-width=".8"/><circle cx="200" cy="200" r="177" fill="none" stroke="#17171a" stroke-width=".8"/><circle cx="200" cy="200" r="182" fill="none" stroke="#222226" stroke-width=".8"/><circle cx="200" cy="200" r="187" fill="none" stroke="#17171a" stroke-width=".8"/><circle cx="200" cy="200" r="192" fill="none" stroke="#17171a" stroke-width=".8"/><circle cx="200" cy="200" r="66" fill="#f0b90b"/><circle cx="200" cy="200" r="66" fill="none" stroke="#150f00" stroke-opacity=".35" stroke-width="1"/><text><textPath href="#lp">VENOM DIGITAL • AME DIGITAL • </textPath></text><circle cx="200" cy="200" r="4" fill="#0b0b0c"/></g></svg></div>
   <div class="wrap">
     <div class="hero-copy">
       <h1 aria-label="The Venom Digital"><span class="ln"><span class="gold">VENOM</span></span><span class="ln"><span class="outline">DIGITAL</span></span></h1>
+      <div class="hero-sub">
       <h2>A Company of AME Digital</h2>
       <p class="lede">Create, distribute and promote your music globally.</p>
       <a class="btn" href="#services">Explore More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       <div class="hero-tags"><span>150+ Platforms</span><span>Live in Hours</span><span>100% Rights Yours</span></div>
+      </div>
     </div>
+    <div class="hero-beat" aria-hidden="true"><span class="kicker">Now spinning</span><strong>Your music.<br>150+ platforms.<br>Live in hours.</strong></div>
   </div>
 </section>
 
@@ -107,7 +116,7 @@
 
 <section class="dist">
   <div class="wrap dist-grid">
-    <div class="rv"><div class="big-num" aria-hidden="true"><span data-count="150">150</span><small>+</small></div></div>
+    <div class="rv globe-box"><canvas class="globe3d" aria-hidden="true"></canvas><div class="big-num" aria-hidden="true"><span data-count="150">150</span><small>+</small></div></div>
     <div>
       <h2 class="h2 rv">Worldwide Distribution</h2>
       <p class="lede rv">Put your releases on <b>150+ streaming and download platforms</b> around the world, including iTunes, Saavn, Amazon, Hungama, Gaana, YouTube Music, Wynk Music and Spotify.</p>
@@ -214,5 +223,6 @@
   </div>
 </footer>
 <script src="js/main.js" defer></script>
+<script type="module" src="js/fx.js"></script>
 </body>
 </html>

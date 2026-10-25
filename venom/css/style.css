@@ -365,3 +365,62 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--gold);box-s
 @media(max-width:620px){.bin{grid-template-columns:repeat(2,1fr);gap:1.2rem .7rem}.sleeve .cn{font-size:.95rem}.sleeve .front{padding:.8rem}.bin-letter .tab{min-width:3.8rem}}
 @media(prefers-reduced-motion:reduce){.sleeve .disc,.sleeve .front::before{transition:none}.sleeve:hover .disc{transform:translateX(-50%) translateY(-16%)}}
 .az a[hidden]{display:none}
+
+/* ---- 3D + motion layer (js/fx.js) ---- */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+.gl3d{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:0;transition:opacity 1s var(--ease)}
+.hero.gl .gl3d{opacity:1}
+.hero.gl .vinyl-wrap{opacity:0;visibility:hidden}
+.js:not(.fx):not(.fx-failed) .hero h1 .ln>span,.js:not(.fx):not(.fx-failed) .page-hero h1 .ln>span,.js:not(.fx):not(.fx-failed) .hero-sub{opacity:0}
+.hero h1 .ch{display:inline-block;will-change:transform}
+.hero-beat{display:none}
+@media(min-width:900px){
+  .hero-beat{display:block;position:absolute;z-index:2;left:0;bottom:clamp(2.5rem,8vh,5rem);opacity:0;pointer-events:none}
+  .hero-beat strong{display:block;font:800 clamp(2rem,4vw,3.6rem)/.98 var(--f-display);letter-spacing:-.04em}
+}
+.globe-box{position:relative}
+.globe3d{position:absolute;left:-14%;top:-18%;width:128%;height:136%;z-index:0;pointer-events:none;opacity:0;transition:opacity 1.2s var(--ease)}
+.globe3d.on{opacity:1}
+.globe-box .big-num{position:relative;z-index:1}
+.marquee{will-change:transform}
+.cur{position:fixed;left:0;top:0;z-index:95;width:2.6rem;height:2.6rem;margin:-1.3rem 0 0 -1.3rem;border:1.5px solid var(--gold);border-radius:50%;pointer-events:none;opacity:0;scale:.35;transition:opacity .3s,scale .35s var(--ease),background-color .3s}
+.cur.show{opacity:.9}
+.cur.big{scale:1.5;background:rgb(240 185 11/.14)}
+@media(hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){.cur{display:none}}
+
+/* ---- world scene, loader, sound ---- */
+.world{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0;transition:opacity 1.4s var(--ease)}
+.world-on .world{opacity:1}
+main,.site-footer{position:relative;z-index:1}
+.world-on .services,.world-on .dist{background:rgb(17 17 19/.62)}
+.world-on .sides .side-panel.a{background:rgb(9 9 10/.55)}
+.world-on .az{background:rgb(9 9 10/.8)}
+.loader{display:none}
+.js .loader{position:fixed;inset:0;z-index:200;display:grid;place-content:center;justify-items:center;gap:1.6rem;background:var(--ink);transition:opacity .7s var(--ease),visibility .7s;animation:loader-out .7s var(--ease) 6s forwards}
+.loader.done{opacity:0;visibility:hidden}
+.loader-mark{width:4.2rem;height:4.2rem;border-radius:50%;display:grid;place-items:center;font:800 2.2rem var(--f-display);animation:spin 2.4s linear infinite}
+.loader-bar{width:min(14rem,60vw);height:2px;background:var(--line);overflow:hidden}
+.loader-bar i{display:block;height:100%;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;animation:load 1.6s var(--ease) forwards}
+@keyframes load{to{transform:scaleX(.9)}}
+@keyframes loader-out{to{opacity:0;visibility:hidden}}
+.sound{display:none;width:44px;height:44px;margin-left:auto;margin-right:.4rem;background:none;border:1px solid var(--line);color:var(--muted);cursor:pointer;place-items:center;transition:color .2s,border-color .2s}
+.fx .sound{display:grid}
+.sound svg{width:1.2rem;height:1.2rem}
+.sound:hover,.sound.on{color:var(--gold);border-color:var(--gold)}
+.sound:not(.on) svg path{stroke-dasharray:3 3}
+@media(min-width:1001px){.sound{margin-left:0}}
+@media(prefers-reduced-motion:reduce){.loader-mark{animation:none}.world{transition:none}}
+
+/* inner pages */
+.world-on .page-hero::before,.world-on .page-hero::after{opacity:.55}
+.page-hero h1 .ch{display:inline-block;will-change:transform}
+.page-hero h1{font-size:clamp(3rem,9vw,8rem);line-height:.9;max-width:none}
+.artist{transform-style:preserve-3d;will-change:transform}
+.page-hero{--roll:0}
+.world-on .page-hero::before,.world-on .page-hero::after{transform:translateX(calc(var(--roll) * 14rem)) rotate(calc(var(--roll) * 140deg))}
+.logo-mark{flex:none}
+.logo{min-width:0}
+.logo-text small{white-space:nowrap}
+@media(max-width:480px){.site-header .wrap{gap:.6rem}.logo-text small{font-size:.5rem;letter-spacing:.2em}.sound{margin-right:0}}

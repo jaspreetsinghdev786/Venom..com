@@ -29,8 +29,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/","gsap":"https://cdn.jsdelivr.net/npm/gsap@3.13.0/index.js","gsap/":"https://cdn.jsdelivr.net/npm/gsap@3.13.0/","lenis":"https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.mjs"}}</script>
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js">
 </head>
 <body>
+<div class="loader" aria-hidden="true"><span class="loader-mark foil">V</span><div class="loader-bar"><i></i></div></div>
+<canvas class="world" data-seed="1.7" aria-hidden="true"></canvas>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap">
@@ -44,6 +48,7 @@
         <li><a href="contact-us.html">Contact Us</a></li>
       </ul>
     </nav>
+    <button class="sound" type="button" aria-label="Ambient sound" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 10v4M7 7v10M11 4v16M15 8v8M19 11v2"/></svg></button>
     <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -119,5 +124,6 @@
   </div>
 </footer>
 <script src="js/main.js" defer></script>
+<script type="module" src="js/fx.js"></script>
 </body>
 </html>

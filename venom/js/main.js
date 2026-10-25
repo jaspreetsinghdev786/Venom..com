@@ -36,11 +36,18 @@ if (reduce || !('IntersectionObserver' in window)) {
 }
 
 // headline lines slide up from their mask
-document.querySelectorAll('.ln > span').forEach((s, i) => {
+const slide = (s, i) => {
   if (reduce || !s.animate) return;
   s.animate([{ transform: 'translateY(110%)' }, { transform: 'translateY(0)' }],
     { duration: 950, delay: 120 + i * 120, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' });
-});
+};
+document.querySelectorAll('.ln > span').forEach((s, i) => { if (!s.closest('.hero, .page-hero')) slide(s, i); });
+// the home hero headline is animated by fx.js; if that never loads, do it here
+setTimeout(() => {
+  if (document.documentElement.classList.contains('fx')) return;
+  document.documentElement.classList.add('fx-failed');
+  document.querySelectorAll('.hero .ln > span, .page-hero .ln > span').forEach(slide);
+}, 2000);
 
 // count-up numbers
 const counters = document.querySelectorAll('[data-count]');
