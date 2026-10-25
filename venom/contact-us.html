@@ -2,73 +2,96 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Us – Venom Digital</title>
-<meta name="description" content="Tell Venom Digital about your release and project.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact Us | Venom Digital</title>
+<meta name="description" content="Tell Venom Digital about your release or project and we will get back to you with the next steps.">
+<link rel="canonical" href="https://venom-digital.example/contact-us.html">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#09090a">
+<meta name="color-scheme" content="dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Venom Digital">
+<meta property="og:title" content="Contact Us | Venom Digital">
+<meta property="og:description" content="Tell Venom Digital about your release or project and we will get back to you with the next steps.">
+<meta property="og:url" content="https://venom-digital.example/contact-us.html">
+<meta property="og:image" content="https://venom-digital.example/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Venom Digital, a company of AME Digital">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact Us | Venom Digital">
+<meta name="twitter:description" content="Tell Venom Digital about your release or project and we will get back to you with the next steps.">
+<meta name="twitter:image" content="https://venom-digital.example/assets/og.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23f0b90b'/%3E%3Cpath d='M8 9h4.5l3.5 10 3.5-10H24l-6 14h-4z' fill='%23150f00'/%3E%3C/svg%3E">
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="cursor" aria-hidden="true"></div>
-
+<a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
-  <div class="container">
-    <a class="logo" href="index.html" aria-label="Venom Digital home"><span class="logo-mark">V</span><span class="logo-text"><b>VENOM</b><small>DIGITAL</small></span></a>
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="Venom Digital, home"><span class="logo-mark foil" aria-hidden="true">V</span><span class="logo-text"><b translate="no">VENOM</b><small translate="no">A COMPANY OF AME DIGITAL</small></span></a>
     <nav class="nav" aria-label="Main">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="our-clients.html">Our Clients</a></li>
         <li><a href="our-artists.html">Our Artists</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a class="btn" href="contact-us.html">Contact Us</a></li>
+        <li><a href="contact-us.html" aria-current="page">Contact Us</a></li>
       </ul>
     </nav>
     <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
-<main>
+<main id="main">
 <section class="page-hero">
-  <div class="container">
-    <h1><span class="ln"><span>Contact</span></span><span class="ln"><span><span class="gold">Us</span></span></span></h1>
+  <div class="wrap">
+    <p class="crumbs"><a href="index.html">Home</a> / Contact Us</p>
+    <h1><span class="ln"><span>Contact Us</span></span></h1>
     <p>Tell us about your release and we will get back to you with the next steps.</p>
   </div>
 </section>
-<section style="padding-top:5rem"><div class="container contact-grid">
-  <div class="contact-info">
-    <div class="rv"><h4>Phone</h4><p>+91 00000 00000</p></div>
-    <div class="rv"><h4>Email</h4><p>hello@example.com</p></div>
-    <div class="rv"><h4>Reach</h4><p>Worldwide services for artists and labels.</p></div>
-    <div class="rv"><h4>Parent company</h4><p><a href="../index.html" style="color:var(--gold-hi)">AME Digital</a></p></div>
-    <div class="rv"><h4>Follow</h4><div class="social"><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="YouTube">YT</a><a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="TikTok">TT</a></div></div>
-  </div>
-  <form id="contact-form" class="rv">
-    <div class="row">
-      <label>Name<input type="text" name="name" required placeholder="Your name" autocomplete="name"></label>
-      <label>Phone<input type="tel" name="phone" placeholder="+91" autocomplete="tel"></label>
+<section>
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <div class="rv"><h2>Phone</h2><a href="tel:+910000000000">+91 00000 00000</a></div>
+      <div class="rv"><h2>Email</h2><a href="mailto:hello@example.com">hello@example.com</a></div>
+      <div class="rv"><h2>Reach</h2><p>Worldwide services for artists and labels.</p></div>
+      <div class="rv"><h2>Parent company</h2><a href="../index.html">AME Digital</a></div>
     </div>
-    <label>Email<input type="email" name="email" required placeholder="you@example.com" autocomplete="email"></label>
-    <label>Service
-      <select name="service"><option>Audio Distribution</option><option>YouTube Promotion</option><option>FB / Insta / Reels</option><option>Verification</option><option>Music Production</option><option>Mixing &amp; Mastering</option><option>Music Video</option><option>Post Production</option><option>Other</option></select>
-    </label>
-    <label>Message<textarea name="message" rows="5" placeholder="Tell us about your project"></textarea></label>
-    <p class="form-note">Frontend only. Hook this form to your backend or a form service before launch.</p>
-    <div class="form-ok" role="status">Thanks. Your message is noted.</div>
-    <button class="btn" type="submit">Send Message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-  </form>
-</div></section>
+    <form id="contact-form" class="rv" method="post" action="https://formspree.io/f/YOUR_FORM_ID" data-email="hello@example.com">
+      <div class="row2">
+        <label>Name<input type="text" name="name" required autocomplete="name" placeholder="Your name…"></label>
+        <label>Phone<input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+91 98765 43210…"></label>
+      </div>
+      <label>Email<input type="email" name="email" required autocomplete="email" spellcheck="false" placeholder="you@example.com…"></label>
+      <label>Service
+        <select name="service">
+          <option>Audio Distribution</option><option>YouTube Promotion</option><option>FB / Insta / Reels</option>
+          <option>Verification</option><option>Music Production</option><option>Mixing &amp; Mastering</option>
+          <option>Music Video</option><option>Post Production</option><option>Other</option>
+        </select>
+      </label>
+      <label>Message<textarea name="message" rows="5" placeholder="Tell us about your project…"></textarea></label>
+      <p class="form-note">We use your details only to reply to this enquiry. See our <a href="privacy.html">Privacy Policy</a>.</p>
+      <button class="btn" type="submit">Send Message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
 </main>
 <footer class="site-footer">
-  <div class="container footer-grid">
+  <div class="wrap footer-grid">
     <div class="footer-brand">
-      <a class="logo" href="index.html"><span class="logo-mark">V</span><span class="logo-text"><b>VENOM</b><small>DIGITAL</small></span></a>
-      <p>A company of <a href="../index.html" style="color:var(--gold-hi)">AME Digital</a>. Want to work with us? Head to the contact form.</p>
-      <div class="social"><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="YouTube">YT</a><a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="TikTok">TT</a></div>
+      <a class="logo" href="index.html" aria-label="Venom Digital, home"><span class="logo-mark foil" aria-hidden="true">V</span><span class="logo-text"><b translate="no">VENOM</b><small translate="no">A COMPANY OF AME DIGITAL</small></span></a>
+      <p>Want to work with us? Head to the <a href="contact-us.html">contact form</a>. Venom Digital is a company of <a href="../index.html">AME Digital</a>.</p>
     </div>
     <div>
-      <h4>Services</h4>
+      <h2>Services</h2>
       <ul>
         <li><a href="services.html#production">Music</a></li>
         <li><a href="services.html#production">Music Video</a></li>
@@ -78,7 +101,7 @@
       </ul>
     </div>
     <div>
-      <h4>Other</h4>
+      <h2>Other</h2>
       <ul>
         <li><a href="services.html#post-production">Video Editing</a></li>
         <li><a href="services.html#post-production">Lyrical Video</a></li>
@@ -88,27 +111,23 @@
       </ul>
     </div>
     <div>
-      <h4>Contact Us</h4>
+      <h2>Contact Us</h2>
       <ul>
-        <li>+91 00000 00000</li>
+        <li><a href="tel:+910000000000">+91 00000 00000</a></li>
         <li>Worldwide Services</li>
-        <li>hello@example.com</li>
+        <li><a href="mailto:hello@example.com">hello@example.com</a></li>
         <li>Contact us for details about any service.</li>
       </ul>
     </div>
   </div>
-  <div class="footer-big" aria-hidden="true">VENOM</div>
+  <svg class="wordmark" viewBox="0 0 1000 200" aria-hidden="true" focusable="false"><text x="0" y="182" textLength="1000" lengthAdjust="spacingAndGlyphs">VENOM</text></svg>
   <div class="footer-bottom">
-    <div class="container">
-      <div><a href="#">Terms of Service</a><a href="#">Privacy Policy</a><a href="#">Sitemap</a></div>
-      <div>Copyright &copy; 2025 Venom Digital &bull; A company of AME Digital</div>
+    <div class="wrap">
+      <div><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="sitemap.xml">Sitemap</a></div>
+      <div>&copy; 2026 Venom Digital &bull; A company of AME Digital &bull; All Rights Reserved</div>
     </div>
   </div>
 </footer>
-
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>

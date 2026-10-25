@@ -1,102 +1,147 @@
-// mobile nav
+// Venom Digital: small, dependency-free behaviour.
+
+// mobile menu
 const toggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.nav');
 if (toggle && nav) {
   const set = (open) => {
     nav.classList.toggle('open', open);
-    toggle.classList.toggle('open', open);
-    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
   };
   toggle.addEventListener('click', () => set(!nav.classList.contains('open')));
   nav.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => set(false)));
   addEventListener('keydown', (e) => e.key === 'Escape' && set(false));
 }
 
-// header state + active link
-const header = document.querySelector('.site-header');
-const onScroll = () => header.classList.toggle('scrolled', scrollY > 24);
-onScroll();
-addEventListener('scroll', onScroll, { passive: true });
-const here = location.pathname.split('/').pop() || 'index.html';
-document.querySelectorAll('.nav a').forEach((a) => {
-  if (a.getAttribute('href') === here) a.classList.add('active');
-});
-
-// contact form (frontend only, no backend yet)
-const form = document.querySelector('#contact-form');
-if (form) form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  form.reset();
-  document.querySelector('.form-ok').style.display = 'block';
-});
-
-// motion
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (window.gsap && window.ScrollTrigger && !reduce) {
-  gsap.registerPlugin(ScrollTrigger);
+const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  if (window.Lenis) {
-    const lenis = new Lenis({ lerp: 0.1 });
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((t) => lenis.raf(t * 1000));
-    gsap.ticker.lagSmoothing(0);
-  }
-
-  // line-mask title reveal
-  gsap.from('.ln > span', { yPercent: 110, duration: 1.2, ease: 'expo.out', stagger: 0.12, delay: 0.15 });
-  gsap.from('.hero-sub, .hero-row, .page-hero p', { opacity: 0, y: 30, duration: 1, ease: 'power3.out', delay: 0.7, stagger: 0.1 });
-
-  // generic reveals
-  ScrollTrigger.batch('.rv', {
-    start: 'top 90%',
-    once: true,
-    onEnter: (els) => gsap.to(els, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.09 }),
-  });
-
-  // pinned horizontal services (desktop only)
-  gsap.matchMedia().add('(min-width: 961px)', () => {
-    const track = document.querySelector('.hscroll-track');
-    if (!track) return;
-    const dist = () => track.scrollWidth - innerWidth + 80;
-    gsap.to(track, {
-      x: () => -dist(),
-      ease: 'none',
-      scrollTrigger: { trigger: '.hscroll-pin', pin: true, scrub: 1, start: 'top top', end: () => '+=' + dist(), invalidateOnRefresh: true },
-    });
-  });
-
-  // count-up
-  document.querySelectorAll('[data-count]').forEach((el) => {
-    const end = parseFloat(el.dataset.count);
-    const suffix = el.dataset.suffix || '';
-    const o = { v: 0 };
-    ScrollTrigger.create({
-      trigger: el, start: 'top 95%', once: true,
-      onEnter: () => gsap.to(o, { v: end, duration: 2, ease: 'power2.out', onUpdate: () => (el.textContent = Math.round(o.v) + suffix) }),
-    });
-  });
-
-  addEventListener('load', () => ScrollTrigger.refresh());
-
-  // cursor glow + magnetic buttons (mouse only)
-  if (matchMedia('(pointer: fine)').matches) {
-    const c = document.querySelector('.cursor');
-    if (c) {
-      const x = gsap.quickTo(c, 'x', { duration: 0.6, ease: 'power3' });
-      const y = gsap.quickTo(c, 'y', { duration: 0.6, ease: 'power3' });
-      addEventListener('mousemove', (e) => { c.classList.add('on'); x(e.clientX); y(e.clientY); });
-    }
-    document.querySelectorAll('.btn').forEach((b) => {
-      b.addEventListener('mousemove', (e) => {
-        const r = b.getBoundingClientRect();
-        b.style.setProperty('--bx', (e.clientX - r.left - r.width / 2) * 0.25 + 'px');
-        b.style.setProperty('--by', (e.clientY - r.top - r.height / 2) * 0.35 + 'px');
-      });
-      b.addEventListener('mouseleave', () => { b.style.setProperty('--bx', '0px'); b.style.setProperty('--by', '0px'); });
-    });
-  }
+// reveal on scroll
+const targets = document.querySelectorAll('.rv');
+if (reduce || !('IntersectionObserver' in window)) {
+  targets.forEach((el) => el.classList.add('in'));
 } else {
-  // no motion / no GSAP: show everything
-  document.querySelectorAll('.rv').forEach((el) => { el.style.opacity = 1; el.style.transform = 'none'; });
-  document.querySelectorAll('[data-count]').forEach((el) => { el.textContent = el.dataset.count + (el.dataset.suffix || ''); });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  targets.forEach((el, i) => {
+    el.style.setProperty('--d', `${(i % 4) * 0.07}s`);
+    io.observe(el);
+  });
+}
+
+// headline lines slide up from their mask
+document.querySelectorAll('.ln > span').forEach((s, i) => {
+  if (reduce || !s.animate) return;
+  s.animate([{ transform: 'translateY(110%)' }, { transform: 'translateY(0)' }],
+    { duration: 950, delay: 120 + i * 120, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' });
+});
+
+// count-up numbers
+const counters = document.querySelectorAll('[data-count]');
+const paint = (el, v) => { el.textContent = Math.round(v) + (el.dataset.suffix || ''); };
+if (reduce || !('IntersectionObserver' in window)) {
+  counters.forEach((el) => paint(el, +el.dataset.count));
+} else {
+  const co = new IntersectionObserver((entries) => entries.forEach((e) => {
+    if (!e.isIntersecting) return;
+    const el = e.target; const end = +el.dataset.count; const t0 = performance.now();
+    const tick = (t) => { const p = Math.min(1, (t - t0) / 1500); paint(el, end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick); co.unobserve(el);
+  }), { threshold: 0.5 });
+  counters.forEach((el) => co.observe(el));
+}
+
+// service rows: hover (mouse) or click opens one at a time
+const rows = document.querySelectorAll('.services .row');
+const setRow = (r, on) => { r.classList.toggle('open', on); r.querySelector('.row-head').setAttribute('aria-expanded', String(on)); };
+rows.forEach((r) => {
+  r.querySelector('.row-head').addEventListener('click', () => {
+    const was = r.classList.contains('open');
+    rows.forEach((o) => setRow(o, false));
+    setRow(r, fine ? true : !was);
+  });
+  if (fine) r.addEventListener('mouseenter', () => rows.forEach((o) => setRow(o, o === r)));
+});
+
+// platform wall: each name takes its brand colour on hover
+document.querySelectorAll('.wall span[data-c]').forEach((s) => s.style.setProperty('--c', s.dataset.c));
+
+// vinyl tilts toward the pointer (mouse only)
+const hero = document.querySelector('.hero');
+const vw = document.querySelector('.vinyl-wrap');
+if (hero && vw && fine && !reduce) {
+  hero.addEventListener('pointermove', (e) => {
+    const r = hero.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    vw.style.setProperty('--ry', `${(x * 10).toFixed(2)}deg`);
+    vw.style.setProperty('--rx', `${(-y * 10).toFixed(2)}deg`);
+  });
+  hero.addEventListener('pointerleave', () => { vw.style.setProperty('--rx', '0deg'); vw.style.setProperty('--ry', '0deg'); });
+}
+
+// magnetic buttons (mouse only)
+if (fine && !reduce) {
+  document.querySelectorAll('.btn').forEach((b) => {
+    b.addEventListener('mousemove', (e) => {
+      const r = b.getBoundingClientRect();
+      b.style.setProperty('--bx', `${(e.clientX - r.left - r.width / 2) * 0.18}px`);
+      b.style.setProperty('--by', `${(e.clientY - r.top - r.height / 2) * 0.28}px`);
+    });
+    b.addEventListener('mouseleave', () => { b.style.setProperty('--bx', '0px'); b.style.setProperty('--by', '0px'); });
+  });
+}
+
+// client filter (text is read with dataset/textContent only)
+const cf = document.querySelector('#client-filter');
+if (cf) {
+  const items = [...document.querySelectorAll('.sleeve')];
+  const groupsEl = [...document.querySelectorAll('.bin-group')];
+  const jumps = [...document.querySelectorAll('.az a')];
+  const count = document.querySelector('#client-count');
+  cf.addEventListener('input', () => {
+    const q = cf.value.trim().toLowerCase();
+    let n = 0;
+    items.forEach((li) => { const hit = !q || li.dataset.name.toLowerCase().includes(q); li.hidden = !hit; if (hit) n++; });
+    groupsEl.forEach((g, i) => {
+      const any = g.querySelector('.sleeve:not([hidden])');
+      g.hidden = !any;
+      if (jumps[i]) jumps[i].hidden = !any;
+    });
+    count.textContent = n === 1 ? '1 client' : n + ' clients';
+  });
+}
+
+// contact form
+// With a real action URL (for example a Formspree endpoint) it posts there.
+// Until then it opens the visitor's email app with the message filled in.
+const form = document.querySelector('#contact-form');
+if (form) {
+  const status = form.querySelector('.form-status');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const action = form.getAttribute('action') || '';
+    if (action && !action.includes('YOUR_FORM_ID')) {
+      status.textContent = 'Sending…';
+      try {
+        const res = await fetch(action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error(String(res.status));
+        form.reset();
+        status.textContent = 'Thanks. Your message has been sent.';
+      } catch {
+        status.textContent = 'Could not send. Please email us directly instead.';
+      }
+      return;
+    }
+    const body = ['Name: ' + data.get('name'), 'Phone: ' + data.get('phone'), 'Service: ' + data.get('service'), '', data.get('message')].join('\n');
+    location.href = 'mailto:' + form.dataset.email + '?subject=' + encodeURIComponent('Venom Digital enquiry from ' + data.get('name')) + '&body=' + encodeURIComponent(body);
+    status.textContent = 'Your email app should open with the message ready to send.';
+  });
 }
